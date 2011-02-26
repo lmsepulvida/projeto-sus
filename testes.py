@@ -1,6 +1,5 @@
 from should_dsl import should, should_not
 import unittest
-import paciente
 import specloud
 from datetime import date
 
