@@ -15,4 +15,10 @@ class Medico():
 		self.matricula = minha_matricula
 		self.especialidade = minha_especialidade
 
+class Hospital():
+	def __init__(self, id, meu_nome, meu_endereco):	
+		self.id = id
+		self.nome = meu_nome
+		self.endereco = meu_endereco
+		
 

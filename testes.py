@@ -5,7 +5,7 @@ from datetime import date
 
 #INICIANDO TESTES USANDO SHOULD_DSL
 
-from bd import Paciente, Medico
+from bd import Paciente, Medico, Hospital
 
 class Test_Paciente(unittest.TestCase):
 
@@ -26,5 +26,14 @@ class Test_Medico(unittest.TestCase):
 		self.medico.matricula |should| equal_to(2222)
 		self.medico.especialidade |should| equal_to("clinico")	
 	
+class Test_Hospital(unittest.TestCase):
+
+	def test_adicionar_novo_hospital(self):
+		self.hospital = Hospital(1,'Hospital Santa Luzia', "Rua das flores 30")
+		self.hospital.id |should| equal_to (1)
+		self.hospital.nome |should| equal_to("Hospital Santa Luzia")
+		self.hospital.endereco |should| equal_to("Rua das flores 30")
+		
+
 if __name__ == "__main__":
 	unittest.main()
