@@ -1,10 +1,15 @@
+
+# -*- coding: cp860 -*-
+import os, sys
 from datetime import date
 from bd import *
 
 option = 0
+versao = 0.5
 
 while option != 7:
     print " ---- PROJETO-SUS ---- "
+    print "Vers√£o: ", versao
     print "Escolha o que deseja fazer: "
     print "1 - Cadastrar Paciente"
     print "2 - Cadastrar Medico(a)"
@@ -45,7 +50,7 @@ while option != 7:
         registry = raw_input()
         print "Digite o cargo: "
         job = raw_input()
-        Enfermeiro(name, registry, job)
+        Enfermeira(name, registry, job)
 
     if option == 4:
         print "CADASTRO DE HOSPITAL"
@@ -58,7 +63,7 @@ while option != 7:
         Hospital(name, code, address)
     
     if option == 5:
-        print "INTERNA«√O DE PACIENTE"
+        print "INTERNA√á√ÉO DE PACIENTE"
         print "Selecione um Paciente para internacao: "
         patient = input()
         print "Digite a data de entrada: "
