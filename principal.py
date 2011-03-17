@@ -19,6 +19,8 @@ while option != 7:
     print "4 - Cadastrar Hospital"
     print "5 - Internação de Paciente"
     print "6 - Liberação de Paciente"
+    print
+    print "0 - Ver pacientes cadastrados"
     print "7 - Sair"
     option = input()
 
@@ -90,4 +92,8 @@ while option != 7:
     if option == 7:
 	system("clear")         
 	print "Obrigado por utilizar nosso sistema"
+
+    if option == 0:
+	system("clear")         
+        print Paciente.pacientes[0].nome
         
