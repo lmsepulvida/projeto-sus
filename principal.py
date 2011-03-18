@@ -9,7 +9,7 @@ option = 0
 
 system("clear") 
 
-while option != 7:
+while option != 9:
     print " ---- PROJETO-SUS ---- "
     print 
     print "Escolha o que deseja fazer: "
@@ -19,9 +19,10 @@ while option != 7:
     print "4 - Cadastrar Hospital"
     print "5 - Internação de Paciente"
     print "6 - Liberação de Paciente"
+    print "7 - Ver pacientes cadastrados"
+    print "8 - Alterar Internacoes"
     print
-    print "0 - Ver pacientes cadastrados"
-    print "7 - Sair"
+    print "9 - Sair"
     option = input()
 
     if option == 1:
@@ -33,6 +34,7 @@ while option != 7:
         print "Digite a idade: "
         age = raw_input()
         Paciente(name, css, age)
+
         print "Cadastrado com sucesso!"
 	print
         
@@ -73,27 +75,65 @@ while option != 7:
         Hospital(name, code, address)
 	print "Cadastrado com sucesso!"
     	print
+
     if option == 5:
         print "INTERNAÇÃO DE PACIENTE"
+	for i in range(len(Paciente.pacientes)):
+		print "[",i,"]",Paciente.pacientes[i].nome
         print "Selecione um Paciente para internacao: "
-        patient = raw_input()
+        patient_tmp = raw_input()
+	opaciente = int(patient_tmp)	
+	patient = Paciente.pacientes[opaciente].nome
         print "Digite a data de entrada: "
         date = raw_input()
-        Internacao.open(patient, date)
-            
+	print "Selecione um hospital:"
+	for i in range(len(Hospital.hospitais)):
+		print "[",i,"]",Hospital.hospitais[i].nome  
+	hospital_tmp = raw_input()
+	ohospital = int(hospital_tmp)
+	hospital = Hospital.hospitais[ohospital].nome
+        print "Selecione um medico:"
+	for i in range(len(Medico.medicos)):
+		print "[",i,"]",Medico.medicos[i].nome
+	        
+	medic = int(raw_input())
+	print "Selecione um enfermeiro:"
+	for i in range(len(Enfermeira.enfermeiras)):
+		print "[",i,"]",Enfermeira.enfermeiras[i].nome
+        nurse = int(raw_input())
+
+	Internacao(patient, date, 0, hospital, Medico.medicos[medic], Enfermeira.enfermeiras[nurse])
+    
     if option == 6:
         print "LIBERACAO DE PACIENTE INTERNADO"
-        print "Selecione um paciente internado: "
+        system("clear")         
+	print "Pacientes internados:"	
+	for i in range(len(Internacao.internacoes)):
+		print "[",i,"]",Internacao.internacoes[i].paciente
+	print "Selecione um paciente internado: "
         patient = raw_input()
         print "Digite a data de saida: "
         date = raw_input()
-        Internacao.close(patient, date)
-    
+        Internacao.internacoes[i].data_saida = date
+        
     if option == 7:
+	system("clear")         
+	for i in range(len(Paciente.pacientes)):
+		print Paciente.pacientes[i].nome
+
+    if option == 8:	
+	system("clear")         
+	print "INTERNACOES:"	
+	for i in range(len(Internacao.internacoes)):
+		print "[",i,"]",Internacao.internacoes[i].paciente
+	print "Selecione uma internacao:"
+        internation = raw_input()
+      	print Internacao.internacoes[i].paciente
+	print Internacao.internacoes[i].data_entrada
+	print Internacao.internacoes[i].data_saida
+
+
+    if option == 9:
 	system("clear")         
 	print "Obrigado por utilizar nosso sistema"
 
-    if option == 0:
-	system("clear")         
-        print Paciente.pacientes[0].nome
-        
