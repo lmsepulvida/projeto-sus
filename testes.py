@@ -25,7 +25,11 @@ class Test_Medico(unittest.TestCase):
 		self.medico.nome |should| equal_to("Roberto")
 		self.medico.crm |should| equal_to(3333)
 		self.medico.matricula |should| equal_to(2222)
-		self.medico.especialidade |should| equal_to("clinico")	
+		self.medico.especialidade |should| equal_to("clinico")
+		#self.adicionar_hospital("santa casa")
+		#self.adicionar_hospital("santa casa")		
+		len(self.medico.hospitais) |should| be_less_than_or_equal_to (3)
+		#self.medico.adicionar_hospital("santa casa") |should_not| include_all_of(["santa casa"])
 	
 class Test_Enfermeira(unittest.TestCase):
 
@@ -35,6 +39,7 @@ class Test_Enfermeira(unittest.TestCase):
 		self.enfermeira.nome |should| equal_to("Maria")
 		self.enfermeira.matricula |should| equal_to(2222)
 		self.enfermeira.cargo |should| equal_to("Chefe enfermagem")
+		len(self.enfermeira.hospitais) |should| be_less_than_or_equal_to (3)
 
 class Test_Hospital(unittest.TestCase):
 
@@ -48,13 +53,15 @@ class Test_Hospital(unittest.TestCase):
 class Test_Internacao(unittest.TestCase):
 
 	def test_realizar_internacao(self):
-		self.internacao = Internacao(1,22/03/2010,0)
+		self.internacao = Internacao(1,22/03/2010,"hgg","house","nurse",0)
 		self.internacao.paciente |should| equal_to (1)		
-		#self.internacao.id |should| equal_to (1)
 		self.internacao.data_entrada |should| equal_to (22/03/2010)
+		self.internacao.hospital |should| equal_to ("hgg")
+		self.internacao.medico |should| equal_to ("house")
+		self.internacao.enfermeiro |should| equal_to ("nurse")
 		#COMO ESPECIFICAR UMA INTERNACAO SEM DATA DE SAIDA?
 		#CRIAR CLASSE/TEST REALIZAR_AUTA?
 		self.internacao.data_saida |should| equal_to (0)
-		
+			
 if __name__ == "__main__":
 	unittest.main()

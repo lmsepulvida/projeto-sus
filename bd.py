@@ -23,7 +23,17 @@ class Medico():
 		self.crm = meu_crm
 		self.matricula = minha_matricula
 		self.especialidade = minha_especialidade
+		self.hospitais = []
 		self.salvaMedicos(self)
+	
+	def adicionar_hospital(self,hospital):
+		#if (len(self.hospitais) == 3):
+	         #   raise RuntimeError("Maximo de 3 hospitais atingido")
+	        #elif (hospital in self.hospitais):
+	         #   raise RuntimeError("Medico ja cadastrado neste hospital")
+	        #else:
+	        #print hospital
+	            self.hospitais.append(hospital)
 
 	@staticmethod        
 	def salvaMedicos(self):
@@ -38,7 +48,17 @@ class Enfermeira():
 		self.nome = meu_nome
 		self.matricula = minha_matricula
 		self.cargo = meu_cargo
+		self.hospitais = []
 		self.salvaEnfermeiras(self)
+
+	def adicionar_hospital(self,hospital):
+		if (len(self.hospitais) == 3):
+	            raise RuntimeError("Maximo de 3 hospitais atingido")
+	        elif (hospital in self.hospitais):
+	           raise RuntimeError("Medico ja cadastrado neste hospital")
+	        else:
+	        #print hospital
+	            self.hospitais.append(hospital)
 
 	@staticmethod        
 	def salvaEnfermeiras(self):
@@ -63,15 +83,17 @@ class Hospital():
 
 class Internacao():
 	internacoes = []
-	def __init__(self, intern_paciente, intern_data_entrada, intern_data_saida, intern_hospital, intern_medico, intern_enfermeiro):	
+	def __init__(self, intern_paciente, intern_data_entrada, intern_hospital, intern_medico, intern_enfermeiro, intern_data_saida):	
 		#self.id = id		
 		self.paciente = intern_paciente
 		self.data_entrada = intern_data_entrada				
 		self.hospital = intern_hospital
-		self.int_medicos = []
-		self.int_medicos.append(intern_medico)		
-		self.int_enfermeiros = []
-		self.int_enfermeiros.append(intern_enfermeiro)
+		self.medico = intern_medico
+		self.enfermeiro = intern_enfermeiro		
+		#self.int_medicos = []
+		#self.int_medicos.append(intern_medico)		
+		#self.int_enfermeiros = []
+		#self.int_enfermeiros.append(intern_enfermeiro)
 		self.data_saida	= intern_data_saida
 		self.salvaInternacoes(self)
 
@@ -79,6 +101,7 @@ class Internacao():
 	def salvaInternacoes(self):
         	self.internacoes.append(self)
 
-	def darAlta(self, intern_data_saida):	
-		self.data_saida = intern_data_saida
+	def addMedico(self, medico):
+        	self.medicos.append(medico)
 
+	

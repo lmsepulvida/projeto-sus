@@ -102,8 +102,9 @@ while option != 9:
 		print "[",i,"]",Enfermeira.enfermeiras[i].nome
         nurse = int(raw_input())
 
-	Internacao(patient, date, 0, hospital, Medico.medicos[medic], Enfermeira.enfermeiras[nurse])
-    
+	Internacao(patient, date, hospital, Medico.medicos[medic].nome, Enfermeira.enfermeiras[nurse].nome,0)
+	#Internacao.addMedico(Medico.medicos[medic].nome)    
+
     if option == 6:
         print "LIBERACAO DE PACIENTE INTERNADO"
         system("clear")         
@@ -127,11 +128,16 @@ while option != 9:
 	for i in range(len(Internacao.internacoes)):
 		print "[",i,"]",Internacao.internacoes[i].paciente
 	print "Selecione uma internacao:"
-        internation = raw_input()
-      	print Internacao.internacoes[i].paciente
-	print Internacao.internacoes[i].data_entrada
-	print Internacao.internacoes[i].data_saida
-
+        internation = int(raw_input())
+      	print "Paciente: ",Internacao.internacoes[internation].paciente
+	print "Data de entrada: ",Internacao.internacoes[internation].data_entrada
+	print "Hospital: ",Internacao.internacoes[internation].hospital
+	print "Medico: ",Internacao.internacoes[internation].medico
+	print "Enfermeiro: ",Internacao.internacoes[internation].enfermeiro
+	print "Data de alta: ",Internacao.internacoes[internation].data_saida	
+#	for j in range(len(Internacao.internacoes[internation].medicos[j])):		
+#		print "Medico ",j,": ",Internacao.internacoes[i].medicos[j]
+	
 
     if option == 9:
 	system("clear")         
